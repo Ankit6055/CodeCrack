@@ -137,7 +137,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Ankit\\OneDrive\\Desktop\\Practix\\Backend\\src\\generated\\prisma",
+      "value": "C:\\Users\\Ankit\\OneDrive\\Desktop\\CodeCrack\\Backend\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -151,7 +151,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Ankit\\OneDrive\\Desktop\\Practix\\Backend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Ankit\\OneDrive\\Desktop\\CodeCrack\\Backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
