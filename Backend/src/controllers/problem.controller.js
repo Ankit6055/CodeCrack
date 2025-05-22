@@ -1,5 +1,9 @@
 import { db } from "../libs/db.js";
-import { getJudge0LanguageId } from "../libs/judge0.lib.js";
+import {
+  getJudge0LanguageId,
+  pollBatchResults,
+  submitBatch,
+} from "../libs/judge0.lib.js";
 
 export const createProblem = async (req, res) => {
   const {
@@ -82,9 +86,56 @@ export const createProblem = async (req, res) => {
   }
 };
 
-export const getAllProblems = async (req, res) => {};
+export const getAllProblems = async (req, res) => {
+  try {
+    const problems = await db.problem.findMany();
 
-export const getProblemById = async (req, res) => {};
+    if (!problems) {
+      return res.status(404).json({
+        error: "No problems found",
+      });
+    }
+
+    res.status(200).json({
+      sucess: true,
+      message: "Message Fetched Successfully",
+      problems,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      error: "Error While Fetching Problem",
+    });
+  }
+};
+
+export const getProblemById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const problem = await db.problem.findunique({
+            where: {
+                id
+            },
+        });
+
+        if (!problem) {
+            return res.status(404).json({
+                error: "Problem not found",
+            });
+        }
+        res.status(200).json({
+            sucess: true,
+            message: "Problem Created successfully",
+            problem,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            error: "Error While Fetching Problem by ID",
+        });
+    }
+};
 
 export const updateProblem = async (req, res) => {};
 
