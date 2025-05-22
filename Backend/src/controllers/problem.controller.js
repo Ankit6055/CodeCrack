@@ -137,7 +137,50 @@ export const getProblemById = async (req, res) => {
     }
 };
 
-export const updateProblem = async (req, res) => {};
+export const updateProblem = async (req, res) => {
+    const { id } = req.params;
+    const {
+        title,
+        description,
+        difficulty,
+        tags,
+        examples,
+        constraints,
+        testcases,
+        codeSnippets,
+        referenceSolutions,
+    } = req.body;
+    
+    try {
+        const updatedProblem = await db.problem.update({
+        where: {
+            id,
+        },
+        data: {
+            title,
+            description,
+            difficulty,
+            tags,
+            examples,
+            constraints,
+            testcases,
+            codeSnippets,
+            referenceSolutions,
+        },
+        });
+    
+        return res.status(200).json({
+        sucess: true,
+        message: "Problem Updated Successfully",
+        problem: updatedProblem,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+        error: "Error While Updating Problem",
+        });
+    }
+};
 
 export const deleteProblem = async (req, res) => {};
 
