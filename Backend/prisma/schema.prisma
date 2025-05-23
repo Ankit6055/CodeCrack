@@ -29,9 +29,9 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  problems   Problem[]
+  problems      Problem[]
   submission    Submission[]
-  // problemSolved ProblemSolved[]
+  problemSolved ProblemSolved[]
   //  playlists Playlist[]
 }
 
@@ -55,9 +55,9 @@ model Problem {
   updatedAt DateTime @updatedAt
 
   //  Relationship
-  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user       User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   submission Submission[]
-  // solvedBy   ProblemSolved[]
+  solvedBy   ProblemSolved[]
   // problemsPlaylists ProblemInPlaylist[]
 }
 
@@ -81,26 +81,40 @@ model Submission {
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   problem Problem @relation(fields: [problemId], references: [id], onDelete: Cascade)
 
-   testCases TestCaseResult[]
+  testCases TestCaseResult[]
 }
 
 model TestCaseResult {
-  id            String   @id @default(uuid())
-  submissionId  String
-  testCase      String
-  passed       Boolean
-  stdout        String?
-  expected      String?
-  stderr        String?
+  id             String   @id @default(uuid())
+  submissionId   String
+  testCase       String
+  passed         Boolean
+  stdout         String?
+  expected       String?
+  stderr         String?
   complileOutput String?
-  status        String
-  memory        String? 
-  time          String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  status         String
+  memory         String?
+  time           String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   // Relationship
   submission Submission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
 
   @@index([submissionId])
+}
+
+model ProblemSolved {
+  id        String   @id @default(uuid())
+  userId    String
+  problemId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationship
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  problem Problem @relation(fields: [problemId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, problemId])
 }
