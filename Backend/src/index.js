@@ -34,5 +34,5 @@ app.use("/api/v1/submission", submissionRoutes);
 app.use("/api/v1/playlist", playlistRoutes);
 
 app.listen(process.env.PORT, () => {
-  console.log("Server is running on port 8081");
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
