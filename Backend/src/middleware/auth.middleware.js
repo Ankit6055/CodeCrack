@@ -3,7 +3,6 @@ import { db } from "../libs/db.js";
 
 export const authMiddleware = async (req, res, next) => {
   try {
-    console.log(req.cookies);
     const token = req.cookies.jwt;
 
     if (!token) {

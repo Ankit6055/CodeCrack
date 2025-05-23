@@ -13,9 +13,7 @@ export const executeCode = async (req, res) => {
     const userId = req.user.id;
 
     // Validate test cases
-    console.log("Test cases: ", stdin);
-    console.log("Expected outputs: ", expected_outputs);
-    // console.log("Source code: ", source_code);
+
     if (
       !Array.isArray(stdin) ||
       stdin.length === 0 ||
