@@ -69,9 +69,9 @@ const ProblemsTable = ({ problems }) => {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto mt-10">
+    <div className="w-full max-w-6xl mx-auto mt-10 px-2">
       {/* Header with Create Playlist Button */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-wrap justify-between items-center mb-6 gap-2">
         <h2 className="text-2xl font-bold">Problems</h2>
         <button
           className="btn btn-primary gap-2"
@@ -118,8 +118,8 @@ const ProblemsTable = ({ problems }) => {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto rounded-xl shadow-md">
-        <table className="table table-zebra table-lg bg-base-200 text-base-content">
+      <div className="overflow-x-auto w-full rounded-xl shadow-md">
+        <table className="table table-zebra table-lg bg-base-200 text-base-content w-full">
           <thead className="bg-base-300">
             <tr>
               <th>Solved</th>

@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 @keyframes blink {
     0%,
     100% {
