@@ -22,6 +22,7 @@ export const getAllSubmission = async(req , res)=>{
     }
 }
 
+
 export const getSubmissionsForProblem = async (req , res)=>{
     try {
         const userId = req.user.id;
@@ -43,6 +44,7 @@ export const getSubmissionsForProblem = async (req , res)=>{
         res.status(500).json({ error: "Failed to fetch submissions" });
     }
 }
+
 
 export const getAllTheSubmissionsForProblem = async (req , res)=>{
     try {
